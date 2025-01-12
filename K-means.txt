@@ -1,0 +1,35 @@
+I, Đánh giá mối quan hệ giữa các mẫu dữ liệu đầu vào trong các cụm
+
+1. Phân tán nội cụm:
+   - Silhouette Score = 0.0596:  
+     - Các cụm không có sự phân tách rõ ràng. Mẫu trong cụm gần như không khác biệt nhiều với các cụm khác.  
+
+2. Độ đồng nhất của các đặc trưng giữa các cụm:
+   - Các đặc trưng như Income, Customer Tenure, Credit Score, và Outstanding Loans có trung bình gần như tương đồng trong các cụm:
+     - Ví dụ: Thu nhập trung bình dao động nhẹ từ 52,507 đến 52,870, còn số dư tín dụng dao động từ 124,265 đến 125,510.
+     -> Các cụm không có sự khác biệt lớn về đặc trưng kinh tế của khách hàng.
+
+3. Phân biệt các cụm qua đặc trưng phi số lượng:
+   - Một số đặc trưng phi số lượng như Marital Status và Education Level có sự khác biệt đáng kể:
+     - Cụm 1 chủ yếu có khách hàng trình độ High School, trong khi cụm 3 tập trung vào nhóm khách hàng có trình độ Diploma.  
+     - Tình trạng hôn nhân: Cụm 3 có đến 71.6% đã kết hôn, trong khi cụm 0 chỉ có 12.4%.  
+   -> Các cụm được phân chia chủ yếu dựa trên các đặc trưng phân loại thay vì các giá trị số liên tục.
+
+II, Đánh giá quan hệ giữa đầu ra (Churn Flag) trong các cụm
+Dựa trên các độ đo định lượng như tỉ lệ rời đi, ARI, và NMI, ta có thể đánh giá mối quan hệ giữa nhãn đầu ra `Churn Flag` và các cụm:
+
+1. Tỉ lệ rời đi trong các cụm:
+   - Tỉ lệ rời đi (Churn Flag = 1) dao động từ 11.91% (cụm 3) đến 12.42% (cụm 2).  
+   - Sự khác biệt rất nhỏ (dưới 0.51%), cho thấy các cụm không có khả năng phân biệt tốt giữa khách hàng rời đi và không rời đi.
+
+2. Đo lường mối tương quan giữa cụm và nhãn:
+   - ARI = -0.00085:  
+     - Giá trị này rất thấp (thậm chí âm), cho thấy phân cụm không phát hiện được bất kỳ mối quan hệ có ý nghĩa nào với nhãn `Churn Flag`.
+   - NMI = 0.00002:  
+     - Giá trị NMI gần như bằng 0, khẳng định rằng các cụm không phản ánh được sự khác biệt giữa các giá trị của `Churn Flag`.
+
+III, Kết luận
+- Các mẫu dữ liệu đầu vào trong các cụm: Sự phân cụm không hiệu quả trong việc tách biệt các đặc trưng chính của khách hàng. Các cụm có xu hướng trùng lặp và không phản ánh được các nhóm khách hàng tự nhiên rõ ràng.
+- Quan hệ giữa đầu ra tương ứng (Churn Flag) và cụm: Nhãn `Churn Flag` không có sự liên hệ đáng kể với các cụm, và các cụm không thể hiện được đặc điểm khác biệt giữa khách hàng rời đi và ở lại.
+
+
